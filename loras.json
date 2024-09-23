@@ -1,0 +1,15 @@
+[
+ 
+    {
+      "image": "images/00140-237225586.png",
+      "title": "Logo.Redmond V2",
+      "repo": "Abdullah-Habib/logolora",
+      "trigger_word": "logo, logoredmaf"
+    },
+    {
+      "image": "images/00086-2612310100.png",
+      "title": "Icons.Redmond V2",
+      "repo": "Abdullah-Habib/icon-lora",
+      "trigger_word": "icons"
+    }
+]
