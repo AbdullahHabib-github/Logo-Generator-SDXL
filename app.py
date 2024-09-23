@@ -22,6 +22,7 @@ from diffusers import (
     UniPCMultistepScheduler
 )
 # import spaces
+app = FastAPI()
 
 # Define a Pydantic model to validate request data
 class LoRARequest(BaseModel):
