@@ -26,7 +26,7 @@ from diffusers import (
 # Define a Pydantic model to validate request data
 class LoRARequest(BaseModel):
     prompt: str
-    negative_prompt: Optional[str] = "low quality, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry"
+    negative_prompt: str# "low quality, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, worst quality, low quality, normal quality, jpeg artifacts, signature, watermark, username, blurry"
     cfg_scale: float
     steps: int
     scheduler: str
