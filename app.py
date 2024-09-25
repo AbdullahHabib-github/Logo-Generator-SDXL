@@ -87,7 +87,7 @@ async def run_lora(request: LoRARequest):
         raise HTTPException(status_code=400, detail="Invalid request")
     # Load LoRA weights
     pipe.load_lora_weights("Abdullah-Habib/logolora",scale = lora_scale)
-    prompt = f"{prompt}, rounded square, logo, logoredmaf, icons"
+    prompt = f"rounded square, logo, logoredmaf, {prompt}, icons"
     print("prompt:",prompt)
     print("neg_prompt:",negative_prompt)
     # Set scheduler
