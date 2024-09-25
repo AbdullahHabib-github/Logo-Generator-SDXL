@@ -89,6 +89,7 @@ async def run_lora(request: LoRARequest):
     pipe.load_lora_weights("Abdullah-Habib/logolora",scale = lora_scale)
     prompt = f"{prompt}, rounded square, logo, logoredmaf, icons"
     print("prompt:",prompt)
+    print("neg_prompt:",negative_prompt)
     # Set scheduler
     scheduler_config = pipe.scheduler.config
     if scheduler == "DPM++ 2M":
