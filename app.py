@@ -87,7 +87,8 @@ async def run_lora(request: LoRARequest):
         raise HTTPException(status_code=400, detail="Invalid request")
     # Load LoRA weights
     pipe.load_lora_weights("Abdullah-Habib/logolora",scale = lora_scale)
-
+    prompt = f"{prompt}, rounded square, logo, logoredmaf, icons"
+    print("prompt:",prompt)
     # Set scheduler
     scheduler_config = pipe.scheduler.config
     if scheduler == "DPM++ 2M":
@@ -127,10 +128,9 @@ async def run_lora(request: LoRARequest):
 
     # Set random seed for reproducibility
     generator = torch.Generator(device="cuda").manual_seed(seed)
-
     # Generate image
     image = pipe(
-        prompt=f"{prompt}, rounded square, logo, logoredmaf, icons",
+        prompt=prompt,
         negative_prompt=negative_prompt,
         num_inference_steps=steps,
         guidance_scale=cfg_scale,
