@@ -18,7 +18,7 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/logogen:latest
-        docker tag ${{ secrets.DOCKER_USERNAME }}/logogen:latest ${{ secrets.DOCKER_USERNAME }}/logogen:$(date +%s) # Optional: timestamp tag
+        docker tag ${{ secrets.DOCKER_USERNAME }}/logogen:latest
 
     - name: Log in to Docker Hub
       uses: docker/login-action@v2
@@ -29,4 +29,3 @@ jobs:
     - name: Push the Docker image
       run: |
         docker push ${{ secrets.DOCKER_USERNAME }}/logogen:latest
-        docker push ${{ secrets.DOCKER_USERNAME }}/logogen:$(date +%s) # Optional: push timestamp tag
