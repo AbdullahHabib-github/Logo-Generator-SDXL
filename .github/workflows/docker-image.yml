@@ -14,5 +14,18 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag logogen:$(date +%s)
+      run: |
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USERNAME }}/logogen:latest
+        docker tag ${{ secrets.DOCKER_USERNAME }}/logogen:latest
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}  # Use the username from secrets
+        password: ${{ secrets.DOCKER_PASSWORD }}  # Make sure to set this secret in your repo settings
+
+    - name: Push the Docker image
+      run: |
+        docker push ${{ secrets.DOCKER_USERNAME }}/logogen:latest
