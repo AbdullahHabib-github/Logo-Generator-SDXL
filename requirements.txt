@@ -71,7 +71,7 @@ pydub==0.25.1
 Pygments==2.18.0
 PyGObject==3.36.0
 PyMatting==1.1.12
-pyparsing==3.1.4
+pyparsing
 python-apt==2.0.1+ubuntu0.20.4.1
 python-dateutil==2.9.0.post0
 python-multipart==0.0.9
