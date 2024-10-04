@@ -72,9 +72,6 @@ Pygments==2.18.0
 PyGObject==3.36.0
 PyMatting==1.1.12
 pyparsing
-python-apt==2.0.1+ubuntu0.20.4.1
-python-dateutil==2.9.0.post0
-python-multipart==0.0.9
 pytz==2024.2
 PyYAML==6.0.2
 referencing==0.35.1
