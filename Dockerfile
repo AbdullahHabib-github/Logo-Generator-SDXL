@@ -19,12 +19,12 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
     apt-get update
 
 # Install Python 3.10
-RUN apt-get install -y python3.10 python3.10-dev && \
+RUN apt-get install -y python3.9 python3.9-dev && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
 
 # Install pip for Python 3.10 using curl
 RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-    python3.10 get-pip.py && \
+    python3.9 get-pip.py && \
     rm get-pip.py
 
 # Upgrade pip and setuptools
