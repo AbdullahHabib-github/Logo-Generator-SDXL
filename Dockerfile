@@ -46,24 +46,8 @@ WORKDIR /app
 # Copy the requirements file to the working directory
 COPY requirements.txt .
 
-# Modify requirements.txt to pin ssh-import-id version
-RUN sed -i 's/ssh-import-id==5.10/ssh-import-id==5.9/g' requirements.txt
-
 # Install the Python dependencies
-
-# ... (previous parts of the Dockerfile remain the same)
-
-# Install system dependencies for dbus-python
-RUN apt-get update && apt-get install -y libdbus-1-dev libdbus-glib-1-dev
-
-# Upgrade pip and setuptools
-RUN pip install --no-cache-dir --upgrade pip setuptools
-
-# ... (rest of the Dockerfile remains the same)
-
-# Install the Python dependencies
-RUN pip install --no-cache-dir --ignore-installed -r requirements.txt || \
-    (sed -i '/dbus-python/d' requirements.txt && pip install --no-cache-dir --ignore-installed -r requirements.txt)
+RUN pip install --no-cache-dir --ignore-installed -r requirements.txt
 
 # Download the base model
 RUN python3 -c "from diffusers import DiffusionPipeline; DiffusionPipeline.from_pretrained('stabilityai/stable-diffusion-xl-base-1.0', torch_dtype='auto', use_safetensors=True, variant='fp16')"
