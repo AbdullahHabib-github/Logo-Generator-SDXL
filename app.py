@@ -37,10 +37,12 @@ class LoRARequest(BaseModel):
     lora_scale: float
 
 
-# Initialize the base model
 base_model = "stabilityai/stable-diffusion-xl-base-1.0"
-pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.float16)
+pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.float16, local_files_only=True)
 pipe.to("cuda")
+
+# Load LoRA weights
+# pipe.load_lora_weights("/root/.cache/huggingface/hub/Abdullah-Habib/logolora", scale=1.0)
 
 def image_to_base64(image: Image) -> str:
     buffered = BytesIO()
@@ -86,7 +88,7 @@ async def run_lora(request: LoRARequest):
     except:
         raise HTTPException(status_code=400, detail="Invalid request")
     # Load LoRA weights
-    pipe.load_lora_weights("Abdullah-Habib/logolora",scale = lora_scale)
+    pipe.load_lora_weights("/root/.cache/huggingface/hub/Abdullah-Habib/logolora", scale=lora_scale)
     prompt = f"rounded square, logo, logoredmaf, {prompt}, icons"
     print("prompt:",prompt)
     print("neg_prompt:",negative_prompt)
