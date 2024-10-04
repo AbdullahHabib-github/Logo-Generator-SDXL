@@ -41,8 +41,6 @@ RUN pip install pycairo
 
 RUN pip install --no-cache-dir --ignore-installed -r requirements.txt
 
-RUN python3 -c "from diffusers import DiffusionPipeline; import torch; model = DiffusionPipeline.from_pretrained('stabilityai/stable-diffusion-xl-base-1.0', torch_dtype=torch.float16, use_safetensors=True, variant='fp16').to(cuda)"
-
 RUN mkdir -p /root/.cache/huggingface/hub
 RUN git clone https://huggingface.co/Abdullah-Habib/logolora /root/.cache/huggingface/hub/Abdullah-Habib/logolora
 
@@ -51,3 +49,4 @@ COPY . .
 EXPOSE 8080
 
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+
