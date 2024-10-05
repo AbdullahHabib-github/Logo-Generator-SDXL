@@ -44,9 +44,10 @@ RUN pip install --no-cache-dir --ignore-installed -r requirements.txt
 RUN mkdir -p /root/.cache/huggingface/hub
 RUN git clone https://huggingface.co/Abdullah-Habib/logolora /root/.cache/huggingface/hub/Abdullah-Habib/logolora
 
-COPY . .
+ADD handler.py .
 
-EXPOSE 8080
+# EXPOSE 8080
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
+# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
 
+CMD [ "python", "-u", "/handler.py" ]

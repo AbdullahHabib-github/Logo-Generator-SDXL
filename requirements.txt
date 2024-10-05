@@ -3,5 +3,6 @@ diffusers
 spaces
 transformers
 peft
+runpod
 rembg
 -e git+https://github.com/huggingface/huggingface_hub.git@64bcff5c7725f29514b15d4db3a7a92e3955e577#egg=huggingface_hub
