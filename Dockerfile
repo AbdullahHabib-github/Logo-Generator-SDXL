@@ -50,4 +50,4 @@ ADD handler.py .
 
 # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
 
-CMD [ "python", "-u", "/handler.py" ]
+CMD [ "python3", "-u", "handler.py" ]
