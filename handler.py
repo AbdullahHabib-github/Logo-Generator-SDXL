@@ -26,6 +26,8 @@ from diffusers import (
 base_model = "stabilityai/stable-diffusion-xl-base-1.0"
 pipe = DiffusionPipeline.from_pretrained(base_model, torch_dtype=torch.float16)
 pipe.to("cuda")
+pipe.load_lora_weights("Abdullah-Habib/logolora",scale = 1)
+
 
 def image_to_base64(image: Image) -> str:
     buffered = BytesIO()
